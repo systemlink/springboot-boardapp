@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>詳細</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" />
+</head>
+<body>
+	<!-- 表題 -->
+	<div id="main" class="container">
+		<table border="0" width="100%">
+			<tr>
+				<td align="center" class="title"><label for="billboard_table_name">掲示板</label>
+					
+			</tr>
+		</table>
+
+		<!-- ボタン領域 -->
+		<table border="0" width="100%">
+			<tr>
+				<td align=right><a class="btn btn-success btn-xs small_button"
+					href="/list"> <span class="glyphicon glyphicon-remove">戻る</span>
+				</a></td>
+			</tr>
+		</table>
+
+		<!-- 表見出し  -->
+		<div class="mid_title">
+			<label for="billboard_title">タイトル</label>
+		</div>
+
+		<div class="mid_title">
+			<label for="billboard_note">内容</label>
+		</div>
+
+		<div class="mid_title">
+			<label for="billboard_billboard_group_id">分類</label>
+		</div>
+
+		<div class="mid_title">
+			<label for="billboard_emp_id">作成者</label>
+		</div>
+		<!-- ボタン領域 -->
+		<div class="fcenter">
+			<form th:action="@{/infos/edit}" method="get">
+				<input class="btn btn-primary button small_button　glyphicon glyphicon-edit" type="submit" name="form" value="編集" /> 
+				<input type="hidden" name="id" th:value="${info.id}" />
+			</form>
+			<input type="submit" class="btn btn-success button glyphicon glyphicon-remove" name="goToTop" value="キャンセル" />
+		</div>
+		<br> <br>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+		th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script src="http://maxcdn.bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>
