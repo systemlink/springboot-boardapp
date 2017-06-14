@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>新規作成</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" />
+</head>
+<body>
+	<!-- 表題 -->
+	<div id="main" class="container">
+		<table border="0" width="100%">
+			<tr>
+				<td align="center" class="title"><label for="board_table_name">掲示板</label><label>新規</label></td>
+			</tr>
+		</table>
+	</div>
+	<!-- 表見出し  -->
+	<div id="input-area" class="container">
+		<form th:action="@{/infos/add}" th:object="${infoForm}" method="post">
+			<input type="hidden" id="id" name="id" value="" />
+			<table class="table table-bordered table-narrow">
+				<colgroup>
+					<col width="300px" />
+				</colgroup>
+				<tr>
+					<td class="bg-primary"><label for="board_title">タイトル</label></td>
+				</tr>
+				<tr>
+					<td><input class="form-control" id="board_title"
+						name="board[title]" type="text" /></td>
+				</tr>
+				<tr>
+					<td class="bg-primary"><label for="board_note">内容</label></td>
+				</tr>
+				<tr>
+					<td><textarea class="form-control" cols="80" id="board_note"
+							name="board[note]" rows="20">
+</textarea></td>
+				</tr>
+				<tr>
+					<td class="bg-primary"><label for="board_board_group_id">分類</label></td>
+				</tr>
+				<tr>
+					<td><select class="form-control" id="board_billboard_group_id"
+						name="board[billboard_group_id]"><option value=""></option>
+							<option value="1">通達／連絡</option>
+							<option value="2">会議開催について</option>
+							<option value="3">スケジュール</option>
+							<option value="4">イベント</option>
+							<option value="9">その他</option></select></td>
+				</tr>
+			</table>
+			<!-- ボタン領域 -->
+			<div class="fcenter">
+				<input type="submit"
+					class="btn btn-primary buttonglyphicon"
+					name="button" value="登録" /> <input type="submit"
+					class="btn btn-success button"
+					name="goToTop" value="キャンセル" />
+			</div>
+		</form>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+		th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script src="http://maxcdn.bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

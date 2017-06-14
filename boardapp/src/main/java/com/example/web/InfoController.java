@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Info;
-import com.example.service.InfoService;
+
 
 @Controller
 @RequestMapping("infos")
 public class InfoController {
-	@Autowired
-	InfoService infoService;
+	
 
 	@ModelAttribute
 	InfoForm setUpForm() {
@@ -30,49 +29,38 @@ public class InfoController {
 
 	@GetMapping
 	String list(Model model) {
-		List<Info> infos = infoService.findAll();
-		model.addAttribute("infos", infos);
 		return "infos/list";
 	}
 
-	@PostMapping(path = "create")
-	String create(@Validated InfoForm form, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-			return list(model);
-		}
-		Info info = new Info();
-		BeanUtils.copyProperties(form, info);
-		infoService.create(info);
+	@PostMapping(path = "add")
+	String add(@Validated InfoForm form, BindingResult result, Model model) {
 		return "infos/add";
 	}
 
 	@GetMapping(path = "edit", params = "form")
-	String editForm(@RequestParam Integer id, InfoForm form) {
-		Info info = infoService.findOne(id);
-		BeanUtils.copyProperties(info, form);
+	String editForm(InfoForm form) {
 		return "infos/edit";
 	}
 
 	@PostMapping(path = "edit")
-	String edit(@RequestParam Integer id, @Validated InfoForm form, BindingResult result) {
-		if (result.hasErrors()) {
-			return editForm(id, form);
-		}
-		Info info = new Info();
-		BeanUtils.copyProperties(form, info);
-		info.setId(id);
-		infoService.update(info);
+	String edit(@Validated InfoForm form, BindingResult result) {
 		return "redirect:/infos";
 	}
 	
-	@RequestMapping(params = "goToTop")
+	
+	
+	@GetMapping(path="add", params = "goToTop")
 	String goToTop() {
-		return "redirect:/infos";
+		return "redirect:/list";
+	}
+	
+	@PostMapping(path="detail")
+	String detail(@Validated InfoForm form, BindingResult result, Model model) {
+		return "infos/detail";
 	}
 	
 	@PostMapping(path = "delete")
-	String delete(@RequestParam Integer id) {
-		infoService.delete(id);
+	String delete(Integer id) {
 		return "redirect:/infos";
 	}
 }

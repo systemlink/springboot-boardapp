@@ -1,4 +1,4 @@
-package com.example.service;
+/*package com.example.service;
 
 import java.io.Serializable;
 import java.util.List;
@@ -39,4 +39,4 @@ public class InfoService {
 	public Info delete(Integer id) {
 		return infoRepository.delete(id);
 	}
-}
+}*/
