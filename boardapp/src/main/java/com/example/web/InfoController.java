@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.domain.Info;
 
 
+
 @Controller
 @RequestMapping("infos")
 public class InfoController {
-	
 
 	@ModelAttribute
 	InfoForm setUpForm() {

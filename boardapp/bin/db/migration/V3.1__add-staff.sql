@@ -1,0 +1,1 @@
+INSERT INTO staff (id, staff_no, k_name, name, del_flg, created_at, update_at) VALUES(1, 'test', 'テスト', '問題', 0, '2014-12-23 13:12:23', '2014-12-24 14:15:12');

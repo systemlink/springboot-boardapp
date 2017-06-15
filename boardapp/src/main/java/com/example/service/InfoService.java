@@ -1,6 +1,5 @@
-/*package com.example.service;
+package com.example.service;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Service;
 import com.example.domain.Info;
 import com.example.repository.InfoRepository;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 @Service
 @Transactional
@@ -28,7 +25,7 @@ public class InfoService {
 		return infoRepository.findOne(id);
 	}
 	
-	public Info create(Info info) {
+	public Info add(Info info) {
 		return infoRepository.save(info);
 	}
 	
@@ -36,7 +33,7 @@ public class InfoService {
 		return infoRepository.save(info);
 	}
 	
-	public Info delete(Integer id) {
-		return infoRepository.delete(id);
+	public void delete(Integer id) {
+		 infoRepository.delete(id);
 	}
-}*/
+}
