@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.domain.Info;
+import com.example.domain.BillBoards;
+
 @Repository
-public interface InfoRepository extends JpaRepository<Info, Integer>{
-	@Query("SELECT created_at, billboard_group_id, title, user_id FROM billboards")
-	List<Info> findAll();
+public interface BillBoardsRepository extends JpaRepository<BillBoards, Integer> {
+	@Query("SELECT b FROM billboards b ORDER BY b.id")
+	List<BillBoards> findAllOrderById();
 }

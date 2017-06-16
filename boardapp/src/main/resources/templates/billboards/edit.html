@@ -17,41 +17,40 @@
 			<tr>
 				<td align="center" class="title"><label
 					for="billboard_table_name">掲示板</label><label>編集</label></td>
+
 			</tr>
 		</table>
 	</div>
 	<!-- 表見出し  -->
 	<div id="input-area" class="container">
-		<form th:action="@{/info/edit}" th:object="${infoForm}" method="post">
-			<input type="hidden" id="id" name="id" value="" />
+		<form th:action="@{/billboards/edit}" th:object="${BillBoardsForm}"
+			method="post">
 			<table class="table table-bordered table-narrow">
 				<colgroup>
 					<col width="300px" />
 				</colgroup>
 				<tr>
-					<td class="bg-primary"><label for="billboard_title">タイトル</label></td>
+					<td class="bg-primary"><label for="title">タイトル</label></td>
+
 				</tr>
 				<tr>
-					<td><input class="form-control" id="billboard_title"
-						name="billboard[title]" type="text" value="" /></td>
+					<td><input type="text" class="form-control" id="title"
+						name="title" th:field="*{title}" value="aa" /></td>
 				</tr>
 				<tr>
 					<td class="bg-primary"><label for="billboard_note">内容</label></td>
 				</tr>
 				<tr>
-					<td><textarea class="form-control" cols="80"
-							id="billboard_note" name="billboard[note]" rows="20">
+					<td><textarea class="form-control" cols="80" id="note"
+							name="note" rows="20" th:field="*{note}">
 </textarea></td>
 				</tr>
 				<tr>
-					<td class="bg-primary"><label
-						for="billboard_billboard_group_id">分類</label></td>
+					<td class="bg-primary"><label for="billboard_group_id">分類</label></td>
 				</tr>
 				<tr>
-					<td><select class="form-control"
-						id="billboard_billboard_group_id"
-						name="billboard[billboard_group_id]" value=""><option
-								value=""></option>
+					<td><select class="form-control" id="billboard_group_id"
+						name="billboard_group_id" value=""><option value=""></option>
 							<option selected="selected" value="1">通達／連絡</option>
 							<option value="2">会議開催について</option>
 							<option value="3">スケジュール</option>
@@ -62,16 +61,17 @@
 		</form>
 		<!-- ボタン領域 -->
 		<div class="fcenter">
-			<form th:action="@{/info/edit}" th:object="${infoForm}" method="post">
-				<!--  <input type="hidden" name="id" th:value="${param.id[0]}" />-->
-				<input type="submit"
+			<form th:action="@{/billboards/edit}" th:object="${BillBoardsForm}"
+				method="post">
+				<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
+					type="submit"
 					class="btn btn-primary buttonglyphicon glyphicon-circle-arrow-down"
 					name="button" value="登録" />
 			</form>
-			<form th:action="@{/infos/delete}" method="post">
+			<form th:action="@{/billboards/delete}" method="post">
 				<input class="btn btn-primary button glyphicon glyphicon-trash"
-					type="submit" value="削除" />
-				<!-- <input type="hidden" name="id" th:value="${customer.id}" />-->
+					type="submit" value="削除" /> <input type="hidden" name="id"
+					th:value="${param.id[0]}" />
 			</form>
 
 			<input type="submit"

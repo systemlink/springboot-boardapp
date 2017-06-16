@@ -21,8 +21,8 @@
 	</div>
 	<!-- 表見出し  -->
 	<div id="input-area" class="container">
-		<form th:action="@{/infos/add}" th:object="${infoForm}" method="post">
-			<input type="hidden" id="id" name="id" value="" />
+		<form th:action="@{/billboards/create}" th:object="${BillBoardsForm}"
+			method="post">
 			<table class="table table-bordered table-narrow">
 				<colgroup>
 					<col width="300px" />
@@ -31,8 +31,8 @@
 					<td class="bg-primary"><label for="board_title">タイトル</label></td>
 				</tr>
 				<tr>
-					<td><input class="form-control" id="board_title"
-						name="board[title]" type="text" /></td>
+					<td><input class="form-control" id="title" name="title"
+						type="text" value="abc" /></td>
 				</tr>
 				<tr>
 					<td class="bg-primary"><label for="board_note">内容</label></td>
@@ -57,11 +57,9 @@
 			</table>
 			<!-- ボタン領域 -->
 			<div class="fcenter">
-				<input type="submit"
-					class="btn btn-primary buttonglyphicon"
+				<input type="submit" class="btn btn-primary buttonglyphicon"
 					name="button" value="登録" /> <input type="submit"
-					class="btn btn-success button"
-					name="goToTop" value="キャンセル" />
+					class="btn btn-success button" name="goToTop" value="キャンセル" />
 			</div>
 		</form>
 	</div>

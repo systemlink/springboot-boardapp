@@ -1,1 +1,0 @@
-INSERT INTO EVENT_CLASS (id, event_class_id, usage_class_id, del_flg, created_at, update_at) VALUES(1, 'test', 'テスト', 0, '2014-12-23 13:12:23', '2014-12-24 14:15:12');

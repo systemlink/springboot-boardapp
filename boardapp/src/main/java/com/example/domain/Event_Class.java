@@ -1,14 +1,9 @@
 package com.example.domain;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -16,20 +11,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "staff")
+@Table(name = "event_class")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Staff {
+public class Event_Class {
 	@Id
 	@GeneratedValue
 	private Integer id;
 	@Column(nullable = false, length = 5)
-	private String staff_no;
-	@Column(nullable = false, length = 40)
-	private String k_name;
-	@Column(nullable = false, length = 40)
-	private String name;
+	private String event_class_id;
+	@Column(nullable = false, length = 20)
+	private String usage_class_id;
 	@Column(nullable = false, length = 1)
 	private String del_flg;
 	@Column(nullable = false)
