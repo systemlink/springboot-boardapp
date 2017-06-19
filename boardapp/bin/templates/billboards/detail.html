@@ -31,33 +31,56 @@
 			</tr>
 		</table>
 
-		<!-- 表見出し  -->
-		<div class="mid_title">
-			<label for="billboard_title">タイトル</label>
-		</div>
+		<form th:action="@{/billboards/detail}" th:object="${billBoardsForm}"
+			method="post">
+			<!-- 表見出し  -->
+			<div class="mid_title">
+				<label for="title">タイトル</label> 
+			</div>
+			
+			<div class="report">
+				<span th:text="*{title}"></span>
+			</div>
+			
+			<div class="mid_title">
+				<label for="billboard_note">内容</label>
+			</div>
+			
+			<div class="report">
+				<span th:text="*{note}"></span>
+			</div>
 
-		<div class="mid_title">
-			<label for="billboard_note">内容</label>
-		</div>
-
-		<div class="mid_title">
-			<label for="billboard_billboard_group_id">分類</label>
-		</div>
-
-		<div class="mid_title">
-			<label for="billboard_emp_id">作成者</label>
-		</div>
+			<div class="mid_title">
+				<label for="billboard_billboard_group_id">分類</label> 
+			</div>
+			
+			<div class="report">
+				<span th:text="*{billboard_group_id}"></span>
+			</div>
+			
+			<div class="mid_title">
+				<label for="billboard_emp_id">作成者</label> 
+			</div>
+			
+			<div class="report">
+				<span th:text="*{user_id}"></span>
+			</div>
+		</form>
 		<!-- ボタン領域 -->
 		<div class="fcenter">
-			<form th:action="@{/infos/edit}" method="get">
+			<form th:action="@{/billboards/edit}" method="get">
 				<input
 					class="btn btn-primary button small_button　glyphicon glyphicon-edit"
-					type="submit" name="form" value="編集" />
-				<!--  <input type="hidden" name="id" th:value="${info.id}" />-->
+					type="submit" name="form" value="編集" /> <input type="hidden"
+					name="id" th:value="${param.id[0]}" />
 			</form>
+			<form th:action="@{/billboards/detail}"  th:object="${billBoardsForm}"
+			method="get">
 			<input type="submit"
 				class="btn btn-success button glyphicon glyphicon-remove"
-				name="goToTop" value="キャンセル" />
+				name="goToTop" value="キャンセル" /> <input type="hidden"
+					name="id" th:value="${param.id[0]}" />
+			</form>
 		</div>
 		<br></br> <br></br>
 	</div>

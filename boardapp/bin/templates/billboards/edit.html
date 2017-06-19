@@ -23,7 +23,7 @@
 	</div>
 	<!-- 表見出し  -->
 	<div id="input-area" class="container">
-		<form th:action="@{/billboards/edit}" th:object="${BillBoardsForm}"
+		<form th:action="@{/billboards/edit}" th:object="${billBoardsForm}"
 			method="post">
 			<table class="table table-bordered table-narrow">
 				<colgroup>
@@ -50,7 +50,8 @@
 				</tr>
 				<tr>
 					<td><select class="form-control" id="billboard_group_id"
-						name="billboard_group_id" value=""><option value=""></option>
+						name="billboard_group_id" value="*{billboard_group_id}"><option
+								value="*{billboard_group_id}"></option>
 							<option selected="selected" value="1">通達／連絡</option>
 							<option value="2">会議開催について</option>
 							<option value="3">スケジュール</option>
@@ -58,26 +59,23 @@
 							<option value="9">その他</option></select></td>
 				</tr>
 			</table>
-		</form>
-		<!-- ボタン領域 -->
-		<div class="fcenter">
-			<form th:action="@{/billboards/edit}" th:object="${BillBoardsForm}"
-				method="post">
-				<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
-					type="submit"
-					class="btn btn-primary buttonglyphicon glyphicon-circle-arrow-down"
-					name="button" value="登録" />
-			</form>
-			<form th:action="@{/billboards/delete}" method="post">
-				<input class="btn btn-primary button glyphicon glyphicon-trash"
-					type="submit" value="削除" /> <input type="hidden" name="id"
-					th:value="${param.id[0]}" />
-			</form>
 
+			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
+				type="submit" class="btn btn-primary buttonglyphicon" name="button"
+				value="登録" />
+		</form>
+		<form th:action="@{/billboards/delete}" method="post">
+			<input class="btn btn-primary button glyphicon glyphicon-trash"
+				type="submit" value="削除" /> <input type="hidden" name="id"
+				th:value="${param.id[0]}" />
+		</form>
+		<form th:action="@{/billboards/edit}" th:object="${billBoardsForm}"
+			method="get">
 			<input type="submit"
 				class="btn btn-success button glyphicon glyphicon-remove"
-				name="goToTop" value="キャンセル" />
-		</div>
+				name="goToTop" value="キャンセル" /> <input type="hidden" name="id"
+				th:value="${param.id[0]}" />
+		</form>
 	</div>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"

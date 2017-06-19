@@ -26,7 +26,7 @@
 		<table border="0" width="100%">
 			<tr>
 				<td align="right">
-					<form th:action="@{/billboards/create}" method="post">
+					<form th:action="@{/billboards/create}" method="get">
 						<button type="submit" class="glyphicon glyphicon-plus">新規</button>
 					</form> <input type="submit"
 					class="btn btn-success button glyphicon glyphicon-remove"
@@ -64,7 +64,7 @@
 				<td th:text="${billboards.title}">title</td>
 				<td th:text="${billboards.user_id}">島根太郎</td>
 				<td align="center">
-					<form th:action="@{/billboards/detail}" method="post">
+					<form th:action="@{/billboards/detail}" method="get">
 						<input
 							class="btn btn-primary btn-xs small_button　glyphicon glyphicon-info-sign"
 							type="submit" name="form" value="詳細" /> <input type="hidden"

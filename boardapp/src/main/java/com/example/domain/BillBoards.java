@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,11 +23,11 @@ public class BillBoards {
 	@Id
 	@GeneratedValue
 	private Integer id;
-	@Column(name = "title", length = 50)
+	@Column(name = "title", length = 50, nullable = false)
 	private String title;
-	@Column(name = "note")
+	@Column(name = "note", nullable=false)
 	private String note;
-	@Column(name = "billboard_group_id")
+	@Column(name = "billboard_group_id", nullable = false)
 	private Integer billboard_group_id;
 	@Column(name = "user_id")
 	private Integer user_id;

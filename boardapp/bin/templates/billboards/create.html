@@ -21,7 +21,7 @@
 	</div>
 	<!-- 表見出し  -->
 	<div id="input-area" class="container">
-		<form th:action="@{/billboards/create}" th:object="${BillBoardsForm}"
+		<form th:action="@{/billboards/create}" th:object="${billBoardsForm}"
 			method="post">
 			<table class="table table-bordered table-narrow">
 				<colgroup>
@@ -32,22 +32,22 @@
 				</tr>
 				<tr>
 					<td><input class="form-control" id="title" name="title"
-						type="text" value="abc" /></td>
+						type="text" /></td>
 				</tr>
 				<tr>
 					<td class="bg-primary"><label for="board_note">内容</label></td>
 				</tr>
 				<tr>
-					<td><textarea class="form-control" cols="80" id="board_note"
-							name="board[note]" rows="20">
+					<td><textarea class="form-control" cols="80" id="note"
+							name="note" rows="20">
 </textarea></td>
 				</tr>
 				<tr>
-					<td class="bg-primary"><label for="board_board_group_id">分類</label></td>
+					<td class="bg-primary"><label for="board_group_id">分類</label></td>
 				</tr>
 				<tr>
-					<td><select class="form-control" id="board_billboard_group_id"
-						name="board[billboard_group_id]"><option value=""></option>
+					<td><select class="form-control" id="billboard_group_id"
+						name="billboard_group_id"><option value="1"></option>
 							<option value="1">通達／連絡</option>
 							<option value="2">会議開催について</option>
 							<option value="3">スケジュール</option>
@@ -55,13 +55,15 @@
 							<option value="9">その他</option></select></td>
 				</tr>
 			</table>
-			<!-- ボタン領域 -->
-			<div class="fcenter">
-				<input type="submit" class="btn btn-primary buttonglyphicon"
-					name="button" value="登録" /> <input type="submit"
-					class="btn btn-success button" name="goToTop" value="キャンセル" />
-			</div>
+			<input type="submit" class="btn btn-primary buttonglyphicon"
+				name="button" value="登録" />
 		</form>
+		<form th:action="@{/billboards/create}" th:object="${billBoardsForm}"
+			method="get">
+			<input type="submit" class="btn btn-success button" name="goToTop"
+				value="キャンセル" />
+		</form>
+
 	</div>
 
 	<script

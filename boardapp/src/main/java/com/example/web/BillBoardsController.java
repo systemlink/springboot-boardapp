@@ -34,13 +34,18 @@ public class BillBoardsController {
 		model.addAttribute("billboards", billboards);
 		return "billboards/list";
 	}
+	
+	@GetMapping(path = "create")
+	String createForm() {
+		return "billboards/create";
+	}
 
 	@PostMapping(path = "create")
-	String add(@Validated BillBoardsForm form, BindingResult result, Model model) {
+	String create(@Validated BillBoardsForm form, BindingResult result, Model model) {
 		BillBoards billboards = new BillBoards();
 		BeanUtils.copyProperties(form, billboards);
 		billboardsService.create(billboards);
-		return "billboards/create";
+		return "redirect:/billboards";
 	}
 
 	@GetMapping(path = "edit", params = "form")
@@ -48,6 +53,12 @@ public class BillBoardsController {
 		BillBoards billboards = billboardsService.findOne(id);
 		BeanUtils.copyProperties(billboards, form);
 		return "billboards/edit";
+	}
+	@GetMapping(path = "detail", params = "form")
+	String detailForm(@RequestParam Integer id, @Validated BillBoardsForm form) {
+		BillBoards billboards = billboardsService.findOne(id);
+		BeanUtils.copyProperties(billboards, form);
+		return "billboards/detail";
 	}
 
 	@PostMapping(path = "edit")
@@ -59,13 +70,16 @@ public class BillBoardsController {
 		return "redirect:/billboards";
 	}
 
-	@GetMapping(path = "add", params = "goToTop")
+	@GetMapping(path = {"edit", "detail","create"}, params = "goToTop")
 	String goToTop() {
-		return "billboards/list";
+		return "redirect:/billboards";
 	}
 
 	@PostMapping(path = "detail")
-	String detail(@Validated BillBoardsForm form, BindingResult result, Model model) {
+	String detail(@RequestParam Integer id,@Validated BillBoardsForm form, BindingResult result) {
+		BillBoards billboards = new BillBoards();
+		BeanUtils.copyProperties(form, billboards);
+		billboards.setId(id);
 		return "billboards/detail";
 	}
 

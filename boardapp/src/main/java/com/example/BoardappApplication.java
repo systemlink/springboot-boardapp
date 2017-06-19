@@ -17,9 +17,9 @@ public class BoardappApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		billboardsService.create(new BillBoards(1, "aaa", "test", 1, 1, "2014-12-23 13:12:23", "2014-12-24 14:15:12"));
-		billboardsService.create(new BillBoards(null, "aaa", "test", 1, 1, "2014-12-23 13:12:23", "2014-12-24 14:15:12"));
-		billboardsService.create(new BillBoards(null, "aaa", "test", 1, 1, "2014-12-23 13:12:23", "2014-12-24 14:15:12"));
+		billboardsService.create(new BillBoards(1, "aaa", "test", 1, 1, "2012-12-23 12:32:00", "2014-03-12 12:32:56"));
+		billboardsService.create(new BillBoards(null, "aaa", "test", 1, 1, "2012-12-23 12:32:00", "2014-03-12 12:32:56"));
+		billboardsService.create(new BillBoards(null, "aaa", "test", 1, 1, "2012-12-23 12:32:00", "2014-03-12 12:32:56"));
 	}
 
 	public static void main(String[] args) {

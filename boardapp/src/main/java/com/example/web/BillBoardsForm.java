@@ -12,4 +12,6 @@ public class BillBoardsForm {
 	private String note;
 	
 	private Integer billboard_group_id;
+	
+	private Integer user_id;
 }
