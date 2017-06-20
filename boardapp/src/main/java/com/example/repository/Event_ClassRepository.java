@@ -6,11 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.domain.BillBoards;
 import com.example.domain.Event_Class;
 
 @Repository
-public interface BillBoardsRepository extends JpaRepository<BillBoards, Integer> {
-	@Query("SELECT b FROM billboards b ORDER BY b.id")
-	List<BillBoards> findAllOrderById();
+public interface Event_ClassRepository extends JpaRepository<Event_Class, Integer> {
+	@Query("SELECT e FROM event_class e ORDER BY e.id")
+	List<Event_Class> findAllOrderById();
 }

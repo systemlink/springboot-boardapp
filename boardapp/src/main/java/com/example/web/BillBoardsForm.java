@@ -14,4 +14,9 @@ public class BillBoardsForm {
 	private Integer billboard_group_id;
 	
 	private Integer user_id;
+	
+	private String created_at;
+	
+	private String updated_at;
+	
 }

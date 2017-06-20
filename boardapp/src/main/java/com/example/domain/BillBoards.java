@@ -27,12 +27,12 @@ public class BillBoards {
 	private String title;
 	@Column(name = "note", nullable=false)
 	private String note;
-	@Column(name = "billboard_group_id", nullable = false)
+	@Column(name = "billboard_group_id")
 	private Integer billboard_group_id;
 	@Column(name = "user_id")
 	private Integer user_id;
 	@Column(name = "created_at")
 	private String created_at;
-	@Column(name = "update_at")
+	@Column(name = "updated_at")
 	private String updated_at;
 }

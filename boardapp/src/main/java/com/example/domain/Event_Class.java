@@ -10,23 +10,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "event_class")
+@Entity(name="event_class")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Event_Class {
 	@Id
-	@GeneratedValue
 	private Integer id;
-	@Column(nullable = false, length = 5)
+	@Column(name="event_class_id", length = 5)
 	private String event_class_id;
-	@Column(nullable = false, length = 20)
+	@Column(name="usage_class_id", length = 20)
 	private String usage_class_id;
-	@Column(nullable = false, length = 1)
-	private String del_flg;
-	@Column(nullable = false)
+	@Column(name="del_flg", length = 1)
+	private Integer del_flg;
+	@Column(name="created_at")
 	private String created_at;
-	@Column(nullable = false)
+	@Column(name="updated_at")
 	private String updated_at;
 }

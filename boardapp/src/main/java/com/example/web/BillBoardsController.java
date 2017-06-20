@@ -54,13 +54,7 @@ public class BillBoardsController {
 		BeanUtils.copyProperties(billboards, form);
 		return "billboards/edit";
 	}
-	@GetMapping(path = "detail", params = "form")
-	String detailForm(@RequestParam Integer id, @Validated BillBoardsForm form) {
-		BillBoards billboards = billboardsService.findOne(id);
-		BeanUtils.copyProperties(billboards, form);
-		return "billboards/detail";
-	}
-
+	
 	@PostMapping(path = "edit")
 	String edit(@RequestParam Integer id, @Validated BillBoardsForm form, BindingResult result) {
 		BillBoards billboards = new BillBoards();
@@ -82,6 +76,14 @@ public class BillBoardsController {
 		billboards.setId(id);
 		return "billboards/detail";
 	}
+	
+	@GetMapping(path = "detail", params = "form")
+	String detailForm(@RequestParam Integer id, @Validated BillBoardsForm form) {
+		BillBoards billboards = billboardsService.findOne(id);
+		BeanUtils.copyProperties(billboards, form);
+		return "billboards/detail";
+	}
+
 
 	@PostMapping(path = "delete")
 	String delete(@RequestParam Integer id) {

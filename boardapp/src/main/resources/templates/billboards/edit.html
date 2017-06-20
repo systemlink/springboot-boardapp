@@ -59,8 +59,10 @@
 							<option value="9">その他</option></select></td>
 				</tr>
 			</table>
-
-			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
+			<input type="hidden" name="created_at" th:value="*{created_at}"/>
+			<input type="hidden" name="user_id" th:value="*{user_id}"/>
+			<input type="hidden" name="updated_at" th:value="*{updated_at}"/>
+ 			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
 				type="submit" class="btn btn-primary buttonglyphicon" name="button"
 				value="登録" />
 		</form>
