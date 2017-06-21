@@ -46,18 +46,19 @@
 					<td class="bg-primary"><label for="board_group_id">分類</label></td>
 				</tr>
 				<tr>
-					<td th:each="event_class : ${event_class}">
-					<select class="form-control" id="billboard_group_id"
+					<td><select class="form-control"
+						id="billboard_group_id"
 						name="billboard_group_id"><option value="1"></option>
-						<option value="${event_class.id}" th:text="${event_class.usage_class_id}"></option>
-							</select></td>
+							<option value="1">通達／連絡</option>
+							<option value="2">会議開催について</option>
+							<option value="3">スケジュール</option>
+							<option value="4">イベント</option>
+							<option value="9">その他</option></select></td>
 				</tr>
 			</table>
-			<input type="hidden" name="user_id" id="user_id" value="1"/>
-			<input type="hidden" name="created_at" id="created_at" value="2012-12-23 12:32:00"/>
-			<input type="hidden" name="updated_at" id="updated_at" value="2013-12-23 14:32:00"/>
-			<input type="submit" class="btn btn-primary buttonglyphicon"
-				name="button" value="登録" />
+			 <input
+				type="submit" class="btn btn-primary buttonglyphicon" name="button"
+				value="登録" />
 		</form>
 		<form th:action="@{/billboards/create}" th:object="${billBoardsForm}"
 			method="get">

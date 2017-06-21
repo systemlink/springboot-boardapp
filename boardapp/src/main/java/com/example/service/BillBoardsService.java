@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ import com.example.repository.BillBoardsRepository;
 public class BillBoardsService {
 	@Autowired
 	BillBoardsRepository billboardsRepository;
+	Date d = new Date();
+	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	String hiniti = date.format(d);
 
 	public List<BillBoards> findAll() {
 		return billboardsRepository.findAllOrderById();
@@ -23,10 +28,15 @@ public class BillBoardsService {
 	}
 
 	public BillBoards create(BillBoards billboards) {
+		billboards.setCreated_at(hiniti);
+		billboards.setUpdated_at(null);
+		billboards.setUser_id(1);
 		return billboardsRepository.save(billboards);
 	}
 
 	public BillBoards update(BillBoards billboards) {
+		billboards.setUpdated_at(hiniti);
+		billboards.setUser_id(1);
 		return billboardsRepository.save(billboards);
 	}
 

@@ -1,6 +1,13 @@
 package com.example.web;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.example.domain.Event_Class;
+import com.example.repository.Event_ClassRepository;
 
 import lombok.Data;
 
@@ -15,8 +22,6 @@ public class BillBoardsForm {
 	
 	private Integer user_id;
 	
-	private String created_at;
-	
-	private String updated_at;
+	private List<Event_Class> event_class;
 	
 }

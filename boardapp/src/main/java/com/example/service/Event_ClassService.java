@@ -1,5 +1,7 @@
 package com.example.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,10 @@ import com.example.repository.Event_ClassRepository;
 public class Event_ClassService {
 	@Autowired
 	Event_ClassRepository event_classRepository;
+	Date d = new Date();
+	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	String hiniti = date.format(d);
+
 
 	public List<Event_Class> findAll() {
 		return event_classRepository.findAllOrderById();
@@ -25,6 +31,8 @@ public class Event_ClassService {
 	}
 
 	public Event_Class create(Event_Class event_class) {
+		event_class.setCreated_at(hiniti);
+		event_class.setUpdated_at(null);
 		return event_classRepository.save(event_class);
 	}
 
