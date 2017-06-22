@@ -1,7 +1,5 @@
 package com.example;
 
-
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -25,12 +23,13 @@ public class BoardappApplication implements CommandLineRunner {
 	BillBoardsService billboardsService;
 	@Autowired
 	Event_ClassService event_classService;
+
 	@Override
 	public void run(String... strings) throws Exception {
 		Date d = new Date();
 		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String hiniti = date.format(d);
-		
+
 		event_classService.create(new Event_Class(1, "1", "通達/連絡", 1, hiniti.toString(), "2014-03-12 12:32:56"));
 		event_classService.create(new Event_Class(2, "2", "会議開催について", 1, hiniti.toString(), "2014-03-12 12:32:56"));
 		event_classService.create(new Event_Class(3, "3", "スケジュール", 1, hiniti.toString(), "2014-03-12 12:32:56"));

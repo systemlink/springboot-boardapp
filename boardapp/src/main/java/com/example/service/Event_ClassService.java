@@ -21,7 +21,6 @@ public class Event_ClassService {
 	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 	String hiniti = date.format(d);
 
-
 	public List<Event_Class> findAll() {
 		return event_classRepository.findAllOrderById();
 	}

@@ -1,5 +1,6 @@
 package com.example.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -15,13 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.BillBoards;
+import com.example.domain.Event_Class;
 import com.example.service.BillBoardsService;
+import com.example.service.Event_ClassService;
 
 @Controller
 @RequestMapping("billboards")
 public class BillBoardsController {
 	@Autowired
 	BillBoardsService billboardsService;
+
+	@Autowired
+	Event_ClassService event_classService;
 
 	@ModelAttribute
 	BillBoardsForm setUpForm() {
@@ -34,7 +40,7 @@ public class BillBoardsController {
 		model.addAttribute("billboards", billboards);
 		return "billboards/list";
 	}
-	
+
 	@GetMapping(path = "create")
 	String createForm() {
 		return "billboards/create";
@@ -54,7 +60,7 @@ public class BillBoardsController {
 		BeanUtils.copyProperties(billboards, form);
 		return "billboards/edit";
 	}
-	
+
 	@PostMapping(path = "edit")
 	String edit(@RequestParam Integer id, @Validated BillBoardsForm form, BindingResult result) {
 		BillBoards billboards = new BillBoards();
@@ -64,26 +70,25 @@ public class BillBoardsController {
 		return "redirect:/billboards";
 	}
 
-	@GetMapping(path = {"edit", "detail","create"}, params = "goToTop")
+	@GetMapping(path = { "edit", "detail", "create" }, params = "goToTop")
 	String goToTop() {
 		return "redirect:/billboards";
 	}
 
 	@PostMapping(path = "detail")
-	String detail(@RequestParam Integer id,@Validated BillBoardsForm form, BindingResult result) {
+	String detail(@RequestParam Integer id, @Validated BillBoardsForm form, BindingResult result) {
 		BillBoards billboards = new BillBoards();
 		BeanUtils.copyProperties(form, billboards);
 		billboards.setId(id);
 		return "billboards/detail";
 	}
-	
+
 	@GetMapping(path = "detail", params = "form")
 	String detailForm(@RequestParam Integer id, @Validated BillBoardsForm form) {
 		BillBoards billboards = billboardsService.findOne(id);
 		BeanUtils.copyProperties(billboards, form);
 		return "billboards/detail";
 	}
-
 
 	@PostMapping(path = "delete")
 	String delete(@RequestParam Integer id) {

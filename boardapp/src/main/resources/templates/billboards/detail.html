@@ -25,13 +25,9 @@
 		<table border="0" width="100%">
 			<tr>
 				<td align="right"><a
-					class="btn btn-success btn-xs small_button" href="/billboards"> 
-					
-					<span
-						class="glyphicon glyphicon-remove">戻る</span>
-						
+					class="btn btn-success btn-xs small_button" href="/billboards">
+						<span class="glyphicon glyphicon-remove">戻る</span>
 				</a></td>
-				
 			</tr>
 		</table>
 
@@ -39,35 +35,35 @@
 			method="post">
 			<!-- 表見出し  -->
 			<div class="mid_title">
-				<label for="title">タイトル</label> 
+				<label for="title">タイトル</label>
 			</div>
-			
+
 			<div class="report">
-				<span th:text="*{title}"></span>
-			</div>
-			
-			<div class="mid_title">
-				<label for="billboard_note">内容</label>
-			</div>
-			
-			<div class="report">
-				<span th:text="*{note}"></span>
+				<th:block th:text="*{title}" />
 			</div>
 
 			<div class="mid_title">
-				<label for="billboard_billboard_group_id">分類</label> 
+				<label for="billboard_note">内容</label>
 			</div>
-			
+
 			<div class="report">
-				<span th:text="*{billboard_group_id}"></span>
+				<th:block th:text="*{note}" />
 			</div>
-			
+
 			<div class="mid_title">
-				<label for="billboard_emp_id">作成者</label> 
+				<label for="billboard_billboard_group_id">分類</label>
 			</div>
-			
+
 			<div class="report">
-				<span th:text="*{user_id}"></span>
+				<th:block th:text="*{billboard_group_id}" />
+			</div>
+
+			<div class="mid_title">
+				<label for="billboard_emp_id">作成者</label>
+			</div>
+
+			<div class="report">
+				<th:block th:text="*{user_id}" />
 			</div>
 		</form>
 		<!-- ボタン領域 -->
@@ -78,12 +74,12 @@
 					type="submit" name="form" value="編集" /> <input type="hidden"
 					name="id" th:value="${param.id[0]}" />
 			</form>
-			<form th:action="@{/billboards/detail}"  th:object="${billBoardsForm}"
-			method="get">
-			<input type="submit"
-				class="btn btn-success button glyphicon glyphicon-remove"
-				name="goToTop" value="キャンセル" /> <input type="hidden"
-					name="id" th:value="${param.id[0]}" />
+			<form th:action="@{/billboards/detail}" th:object="${billBoardsForm}"
+				method="get">
+				<input type="submit"
+					class="btn btn-success button glyphicon glyphicon-remove"
+					name="goToTop" value="キャンセル" /> <input type="hidden" name="id"
+					th:value="${param.id[0]}" />
 			</form>
 		</div>
 		<br></br> <br></br>

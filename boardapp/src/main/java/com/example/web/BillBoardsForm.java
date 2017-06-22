@@ -8,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.domain.Event_Class;
 import com.example.repository.Event_ClassRepository;
+import com.example.service.Event_ClassService;
 
 import lombok.Data;
 
 @Data
 public class BillBoardsForm {
+	@Autowired
+	Event_ClassService event_classService;
 	
 	private String title;
 	
@@ -22,6 +25,6 @@ public class BillBoardsForm {
 	
 	private Integer user_id;
 	
-	private List<Event_Class> event_class;
+	private List<Event_Class> list;
 	
 }

@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.domain.BillBoards;
+import com.example.domain.Event_Class;
 import com.example.repository.BillBoardsRepository;
+import com.example.repository.Event_ClassRepository;
 
 @Service
 @Transactional
 public class BillBoardsService {
 	@Autowired
 	BillBoardsRepository billboardsRepository;
+
+	@Autowired
+	Event_ClassRepository event_classRepository;
 	Date d = new Date();
 	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 	String hiniti = date.format(d);
@@ -34,10 +39,10 @@ public class BillBoardsService {
 		return billboardsRepository.save(billboards);
 	}
 
-	public BillBoards update(BillBoards billboards) {
+	public void update(BillBoards billboards) {
 		billboards.setUpdated_at(hiniti);
 		billboards.setUser_id(1);
-		return billboardsRepository.save(billboards);
+		billboardsRepository.save(billboards);
 	}
 
 	public void delete(Integer id) {

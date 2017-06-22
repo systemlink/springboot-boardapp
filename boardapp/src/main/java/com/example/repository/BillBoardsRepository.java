@@ -11,6 +11,6 @@ import com.example.domain.Event_Class;
 
 @Repository
 public interface BillBoardsRepository extends JpaRepository<BillBoards, Integer> {
-	@Query("SELECT b FROM billboards b ORDER BY b.id")
+	@Query("SELECT b FROM billboards b ORDER BY b.created_at desc, b.id desc")
 	List<BillBoards> findAllOrderById();
 }
