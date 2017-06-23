@@ -16,7 +16,7 @@
 		<table border="0" width="100%">
 			<tr>
 				<td align="center" class="title"><label
-					for="billboard_table_name">掲示板</label><label>編集</label></td>
+					for="billboard_table_name"><font size="5">掲示板</font></label><label><font size="5">編集</font></label></td>
 
 			</tr>
 		</table>
@@ -51,11 +51,9 @@
 					<td><select class="form-control" id="billboard_group_id"
 						name="billboard_group_id" value="*{billboard_group_id}"><option
 								value="*{billboard_group_id}"></option>
-							<option selected="selected" value="1">通達／連絡</option>
-							<option value="2">会議開催について</option>
-							<option value="3">スケジュール</option>
-							<option value="4">イベント</option>
-							<option value="9">その他</option></select></td>
+							<option th:each="list : ${list}" th:value="${list.id}"
+								th:text="${list.usage_class_id}" th:field="*{billboard_group_id}">pulldown</option>
+						</select></td>
 				</tr>
 			</table>
 			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input

@@ -42,7 +42,10 @@ public class BillBoardsController {
 	}
 
 	@GetMapping(path = "create")
-	String createForm() {
+	String createForm(@Validated BillBoardsForm form,  Model model) {
+		List<Event_Class> list = event_classService.findAll();
+		model.addAttribute("list", list);
+		form.setList(list);
 		return "billboards/create";
 	}
 
@@ -55,9 +58,13 @@ public class BillBoardsController {
 	}
 
 	@GetMapping(path = "edit", params = "form")
-	String editForm(@RequestParam Integer id, @Validated BillBoardsForm form) {
+	String editForm(@RequestParam Integer id, @Validated BillBoardsForm form, Model model) {
 		BillBoards billboards = billboardsService.findOne(id);
 		BeanUtils.copyProperties(billboards, form);
+		List<Event_Class> list = event_classService.findAll();
+		model.addAttribute("list", list);
+		form.setList(list);
+		BeanUtils.copyProperties(list, form);
 		return "billboards/edit";
 	}
 

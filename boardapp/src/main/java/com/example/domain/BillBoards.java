@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -37,5 +38,4 @@ public class BillBoards {
 	private String created_at;
 	@Column(name = "updated_at")
 	private String updated_at;
-	
 }

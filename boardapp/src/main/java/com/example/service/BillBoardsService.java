@@ -34,7 +34,7 @@ public class BillBoardsService {
 
 	public BillBoards create(BillBoards billboards) {
 		billboards.setCreated_at(hiniti);
-		billboards.setUpdated_at(null);
+		billboards.setUpdated_at(hiniti);
 		billboards.setUser_id(1);
 		return billboardsRepository.save(billboards);
 	}
