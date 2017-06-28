@@ -7,12 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,12 +24,17 @@ public class BillBoards {
 	private String title;
 	@Column(name = "note", nullable = false)
 	private String note;
-	@Column(name = "billboard_group_id")
+	@Column(name = "billboard_group_id", nullable = false, insertable=false, updatable=false)
 	private Integer billboard_group_id;
 	@Column(name = "user_id")
 	private Integer user_id;
+	@Column(name = "del_flg")
+	private Integer del_flg;
 	@Column(name = "created_at", updatable = false)
 	private String created_at;
 	@Column(name = "updated_at")
 	private String updated_at;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "billboard_group_id", referencedColumnName = "id")
+	private Event_Class event_class;
 }

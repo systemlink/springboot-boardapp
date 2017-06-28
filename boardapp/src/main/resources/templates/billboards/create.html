@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+F<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
@@ -15,7 +15,8 @@
 	<div id="main" class="container">
 		<table border="0" width="100%">
 			<tr>
-				<td align="center" class="title"><label for="board_table_name"><font size="5">掲示板</font></label><label><font size="5">新規</font></label></td>
+				<td align="center" class="title"><label for="board_table_name"><font
+						size="5">掲示板</font></label><label><font size="5">新規</font></label></td>
 			</tr>
 		</table>
 	</div>
@@ -53,7 +54,7 @@
 				</tr>
 			</table>
 			<input type="submit" class="btn btn-primary buttonglyphicon"
-				name="button" value="登録" />
+				name="button" value="登録" /> 
 		</form>
 		<form th:action="@{/billboards/create}" th:object="${billBoardsForm}"
 			method="get">
@@ -61,7 +62,6 @@
 				value="キャンセル" />
 		</form>
 	</div>
-
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
 		th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>

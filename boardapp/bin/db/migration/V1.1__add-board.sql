@@ -1,1 +1,1 @@
-INSERT INTO billboards(title, note, billboard_group_id, user_id, created_at, updated_at) VALUES('test', 'test', 1, 1, '2014-12-23', '2014-12-24');
+INSERT INTO billboards(title, note, billboard_group_id, user_id, del_flg, created_at, updated_at) VALUES('test', 'test', 1, 1, 0, '2014-12-23', '2014-12-24');

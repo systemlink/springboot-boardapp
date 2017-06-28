@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.example.domain.BillBoards;
-import com.example.domain.Event_Class;
 import com.example.repository.BillBoardsRepository;
 import com.example.repository.Event_ClassRepository;
 
@@ -24,6 +23,11 @@ public class BillBoardsService {
 	SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
 	String hiniti = date.format(d);
 
+	public List<BillBoards> findList() {
+		List<BillBoards> billboardsList = findAll();
+		return billboardsList;
+	}
+
 	public List<BillBoards> findAll() {
 		return billboardsRepository.findAllOrderById();
 	}
@@ -36,16 +40,19 @@ public class BillBoardsService {
 		billboards.setCreated_at(hiniti);
 		billboards.setUpdated_at(hiniti);
 		billboards.setUser_id(1);
+		billboards.setDel_flg(0);
 		return billboardsRepository.save(billboards);
 	}
 
 	public void update(BillBoards billboards) {
 		billboards.setUpdated_at(hiniti);
+		billboards.setDel_flg(0);
 		billboards.setUser_id(1);
 		billboardsRepository.save(billboards);
 	}
 
-	public void delete(Integer id) {
-		billboardsRepository.delete(id);
+	public void delete(BillBoards billboards) {
+		billboards.setDel_flg(1);
+		update(billboards);
 	}
 }

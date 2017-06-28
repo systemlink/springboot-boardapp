@@ -1,6 +1,5 @@
 package com.example.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -34,15 +33,15 @@ public class BillBoardsController {
 		return new BillBoardsForm();
 	}
 
-	@GetMapping
+	@GetMapping()
 	String list(Model model) {
-		List<BillBoards> billboards = billboardsService.findAll();
+		List<BillBoards> billboards = billboardsService.findList();
 		model.addAttribute("billboards", billboards);
 		return "billboards/list";
 	}
 
 	@GetMapping(path = "create")
-	String createForm(@Validated BillBoardsForm form,  Model model) {
+	String createForm(@Validated BillBoardsForm form, Model model) {
 		List<Event_Class> list = event_classService.findAll();
 		model.addAttribute("list", list);
 		form.setList(list);
@@ -53,6 +52,8 @@ public class BillBoardsController {
 	String create(@Validated BillBoardsForm form, BindingResult result, Model model) {
 		BillBoards billboards = new BillBoards();
 		BeanUtils.copyProperties(form, billboards);
+		Event_Class event_class = event_classService.findOne(form.getBillboard_group_id());
+		billboards.setEvent_class(event_class);
 		billboardsService.create(billboards);
 		return "redirect:/billboards";
 	}
@@ -73,6 +74,8 @@ public class BillBoardsController {
 		BillBoards billboards = new BillBoards();
 		BeanUtils.copyProperties(form, billboards);
 		billboards.setId(id);
+		Event_Class event_class = event_classService.findOne(form.getBillboard_group_id());
+		billboards.setEvent_class(event_class);
 		billboardsService.update(billboards);
 		return "redirect:/billboards";
 	}
@@ -98,8 +101,10 @@ public class BillBoardsController {
 	}
 
 	@PostMapping(path = "delete")
-	String delete(@RequestParam Integer id) {
-		billboardsService.delete(id);
+	String delete(@RequestParam Integer id, BillBoardsForm form) {
+		BillBoards billboards = billboardsService.findOne(id);
+		BeanUtils.copyProperties(billboards, form);
+		billboardsService.delete(billboards);
 		return "redirect:/billboards";
 	}
 }

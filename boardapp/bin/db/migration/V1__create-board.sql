@@ -3,5 +3,6 @@ CREATE TABLE billboards(id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
  						note VARCHAR(255) NOT NULL, 
  						billboard_group_id INT NOT NULL, 
  						user_id INT NOT NULL DEFAULT '1', 
-						created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-						updated_at TIMESTAMP NOT NULL);
+ 						del_flg INT NOT NULL DEFAULT '0', 
+						created_at DATE NOT NULL, 
+						updated_at DATE NOT NULL);

@@ -16,7 +16,8 @@
 		<table border="0" width="100%">
 			<tr>
 				<td align="center" class="title"><label
-					for="billboard_table_name"><font size="5">掲示板</font></label><label><font size="5">編集</font></label></td>
+					for="billboard_table_name"><font size="5">掲示板</font></label><label><font
+						size="5">編集</font></label></td>
 
 			</tr>
 		</table>
@@ -49,22 +50,18 @@
 				</tr>
 				<tr>
 					<td><select class="form-control" id="billboard_group_id"
-						name="billboard_group_id" value="*{billboard_group_id}"><option
-								value="*{billboard_group_id}"></option>
+						name="billboard_group_id">
 							<option th:each="list : ${list}" th:value="${list.id}"
-								th:text="${list.usage_class_id}" th:field="*{billboard_group_id}">pulldown</option>
-						</select></td>
+								th:text="${list.usage_class_id}"
+								th:field="*{billboard_group_id}">pulldown</option>
+					</select></td>
 				</tr>
 			</table>
 			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
 				type="submit" class="btn btn-primary buttonglyphicon" name="button"
 				value="登録" />
 		</form>
-		<form th:action="@{/billboards/delete}" method="post">
-			<input class="btn btn-primary button glyphicon glyphicon-trash"
-				type="submit" value="削除" /> <input type="hidden" name="id"
-				th:value="${param.id[0]}" />
-		</form>
+
 		<form th:action="@{/billboards/edit}" th:object="${billBoardsForm}"
 			method="get">
 			<input type="submit"
