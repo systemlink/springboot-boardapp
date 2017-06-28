@@ -46,7 +46,6 @@ public class BillBoardsService {
 
 	public void update(BillBoards billboards) {
 		billboards.setUpdated_at(hiniti);
-		billboards.setDel_flg(0);
 		billboards.setUser_id(1);
 		billboardsRepository.save(billboards);
 	}

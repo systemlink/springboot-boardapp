@@ -74,6 +74,7 @@ public class BillBoardsController {
 		BillBoards billboards = new BillBoards();
 		BeanUtils.copyProperties(form, billboards);
 		billboards.setId(id);
+		billboards.setDel_flg(0);
 		Event_Class event_class = event_classService.findOne(form.getBillboard_group_id());
 		billboards.setEvent_class(event_class);
 		billboardsService.update(billboards);
