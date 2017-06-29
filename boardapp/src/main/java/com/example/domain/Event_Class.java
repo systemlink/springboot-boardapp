@@ -9,6 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +24,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Event_Class {
 	@Id
-	@Column(name = "id", insertable=false, updatable=false)
+	@Column(name = "id", insertable = false, updatable = false)
 	private Integer id;
 	@Column(name = "event_class_id", length = 5)
 	private String event_class_id;
@@ -32,5 +37,6 @@ public class Event_Class {
 	@Column(name = "updated_at")
 	private String updated_at;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "event_class")
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 	private List<BillBoards> billboards;
 }

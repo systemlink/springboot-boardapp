@@ -18,7 +18,7 @@ public class BillBoardsForm {
 	private Integer billboard_group_id;
 
 	private Integer user_id;
-	
+
 	private Event_Class event_class;
 
 	private List<Event_Class> list;

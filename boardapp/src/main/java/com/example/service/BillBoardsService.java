@@ -44,10 +44,10 @@ public class BillBoardsService {
 		return billboardsRepository.save(billboards);
 	}
 
-	public void update(BillBoards billboards) {
+	public BillBoards update(BillBoards billboards) {
 		billboards.setUpdated_at(hiniti);
 		billboards.setUser_id(1);
-		billboardsRepository.save(billboards);
+		return billboardsRepository.save(billboards);
 	}
 
 	public void delete(BillBoards billboards) {

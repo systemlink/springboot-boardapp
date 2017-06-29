@@ -9,6 +9,23 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
 	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+	th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+<script src="http://maxcdn.bootstrap/3.3.7/js/bootstrap.min.js"
+	th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+<script>
+	$(document).ready(
+			function() {
+				$(".clearForm").bind(
+						"click",
+						function() {
+							$(this.form).find("textarea, :text, select")
+									.val("").end().find("checked").prop(
+											"checked", false);
+						});
+			});
+</script>
 </head>
 <body>
 	<!-- 表題 -->
@@ -54,7 +71,8 @@
 				</tr>
 			</table>
 			<input type="submit" class="btn btn-primary buttonglyphicon"
-				name="button" value="登録" /> 
+				name="button" value="登録" /> <input
+				class="btn btn-success clearForm" type="button" value="リセット" />
 		</form>
 		<form th:action="@{/billboards/create}" th:object="${billBoardsForm}"
 			method="get">
@@ -62,10 +80,5 @@
 				value="キャンセル" />
 		</form>
 	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
-		th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
-	<script src="http://maxcdn.bootstrap/3.3.7/js/bootstrap.min.js"
-		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 </body>
 </html>
