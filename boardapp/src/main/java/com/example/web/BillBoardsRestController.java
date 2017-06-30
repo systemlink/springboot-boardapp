@@ -52,19 +52,24 @@ public class BillBoardsRestController {
 	}
 
 	@PostMapping(path = "create")
-	BillBoards create(@RequestBody BillBoards billboards) {
+	@ResponseStatus(HttpStatus.CREATED)
+	BillBoards create(@RequestBody BillBoards billboard) {
+		BillBoards billboards = new BillBoards();
+		BeanUtils.copyProperties(billboard, billboards);
+		Event_Class event_class = event_classService.findOne(billboard.getBillboard_group_id());
+		billboards.setEvent_class(event_class);
 		return billboardsService.create(billboards);
 
 	}
 
 	@PutMapping(path = "{id}")
-	BillBoards edit(@PathVariable Integer id, @Validated BillBoardsForm form, @RequestBody BillBoards billboards) {
-		BillBoards billboard = billboardsService.findOne(id);
-		BeanUtils.copyProperties(billboard, form);
-		billboards = new BillBoards();
-		BeanUtils.copyProperties(form, billboards);
+	BillBoards edit(@PathVariable Integer id, @RequestBody BillBoards billboard) {
+		BillBoards billboards = new BillBoards();
+		BeanUtils.copyProperties(billboard, billboards);
 		billboards.setId(id);
 		billboards.setDel_flg(0);
+		Event_Class event_class = event_classService.findOne(billboard.getBillboard_group_id());
+		billboards.setEvent_class(event_class);
 		return billboardsService.update(billboards);
 	}
 

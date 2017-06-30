@@ -25,10 +25,11 @@
 			<tr>
 				<td align="right">
 					<form th:action="@{/billboards/create}" method="get">
-						<button type="submit" class="glyphicon glyphicon-plus">新規</button>
-					</form> <input type="submit"
-					class="btn btn-success button glyphicon glyphicon-remove"
-					name="goToTop" value="戻る" />
+						<button type="submit"
+							class="btn btn-primary glyphicon glyphicon-plus">新規</button>
+					</form>
+					<button type="submit"
+						class="btn btn-success glyphicon glyphicon-remove" name="goToTop">戻る</button>
 				</td>
 			</tr>
 		</table>
@@ -65,27 +66,24 @@
 				<td th:text="${billboards.user_id}">島根太郎</td>
 				<td align="center">
 					<form th:action="@{/billboards/detail}" method="get">
-						<input
-							class="btn btn-primary btn-xs small_button　glyphicon glyphicon-info-sign"
-							type="submit" name="form" value="詳細" /> <input type="hidden"
-							name="id" th:value="${billboards.id}" />
+						<button
+							class="btn btn-primary btn-xs glyphicon glyphicon-info-sign"
+							type="submit" name="form">詳細</button>
+						<input type="hidden" name="id" th:value="${billboards.id}" />
 					</form>
 				</td>
 				<td align="center">
 					<form th:action="@{/billboards/edit}" method="get">
-						<input
-							class="btn btn-primary btn-xs small_button　glyphicon glyphicon-edit"
-							type="submit" name="form" value="編集" /> <input type="hidden"
-							name="id" th:value="${billboards.id}" />
+						<button class="btn btn-primary btn-xs glyphicon glyphicon-edit"
+							type="submit" name="form">編集</button>
+						<input type="hidden" name="id" th:value="${billboards.id}" />
 					</form>
 				</td>
 				<td align="center">
 					<form th:action="@{/billboards/delete}" method="post">
-						<input
-							class="btn btn-danger btn-xs button glyphicon glyphicon-trash"
-							type="submit" value="削除"
-							onclick="return confirm('削除してもよろしいですか？');" /><input
-							type="hidden" name="id" th:value="${billboards.id}" />
+						<button class="btn btn-danger btn-xs"
+							type="submit" onclick="return confirm('削除してもよろしいですか？');">削除</button>
+						<input type="hidden" name="id" th:value="${billboards.id}" />
 					</form>
 				</td>
 			</tr>
