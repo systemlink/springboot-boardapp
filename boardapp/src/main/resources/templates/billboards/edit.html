@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>編集</title>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" />
+</head>
+<body>
+	<!-- 表題 -->
+	<div id="main" class="container">
+		<table border="0" width="100%">
+			<tr>
+				<td align="center" class="title"><label
+					for="billboard_table_name"><font size="5">掲示板</font></label><label><font
+						size="5">編集</font></label></td>
+
+			</tr>
+		</table>
+	</div>
+	<!-- 表見出し  -->
+	<div id="input-area" class="container">
+		<form th:action="@{/billboards/edit}" th:object="${billBoardsForm}"
+			method="post">
+			<table class="table table-bordered table-narrow">
+				<colgroup>
+					<col width="300px" />
+				</colgroup>
+				<tr>
+					<td class="bg-primary"><label for="title">タイトル</label></td>
+				</tr>
+				<tr>
+					<td><input type="text" class="form-control" id="title"
+						name="title" th:field="*{title}" value="aa" /></td>
+				</tr>
+				<tr>
+					<td class="bg-primary"><label for="billboard_note">内容</label></td>
+				</tr>
+				<tr>
+					<td><textarea class="form-control" cols="80" id="note"
+							name="note" rows="20" th:field="*{note}">
+</textarea></td>
+				</tr>
+				<tr>
+					<td class="bg-primary"><label for="billboard_group_id">分類</label></td>
+				</tr>
+				<tr>
+					<td><select class="form-control" id="billboard_group_id"
+						name="billboard_group_id">
+							<option th:each="list : ${list}" th:value="${list.id}"
+								th:text="${list.usage_class_id}"
+								th:field="*{billboard_group_id}">pulldown</option>
+					</select></td>
+				</tr>
+			</table>
+			<input type="hidden" name="id" th:value="${param.id[0]}" /> <input
+				type="submit" class="btn btn-primary buttonglyphicon" name="button"
+				value="登録" />
+		</form>
+
+		<form th:action="@{/billboards/edit}" th:object="${billBoardsForm}"
+			method="get">
+			<input type="submit"
+				class="btn btn-success button glyphicon glyphicon-remove"
+				name="goToTop" value="キャンセル" /> <input type="hidden" name="id"
+				th:value="${param.id[0]}" />
+		</form>
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+		th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script src="http://maxcdn.bootstrap/3.3.7/js/bootstrap.min.js"
+		th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>
